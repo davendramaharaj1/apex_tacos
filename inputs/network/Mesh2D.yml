@@ -1,0 +1,4 @@
+topology: [ Mesh2D ]
+npus_count: [ 144 ]  # number of NPUs
+bandwidth: [ 50.0 ]  # GB/s
+latency: [ 500.0 ]  # ns
