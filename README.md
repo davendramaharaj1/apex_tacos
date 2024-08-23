@@ -10,4 +10,4 @@ Collective communication techniques have played a significant role in optimizing
 
 2. This information is used to instantiate the pipelines at build time.
 
-![TACOS to APEX flow](URL-to-image)
+![TACOS to APEX flow](https://github.com/davendramaharaj1/apex_tacos/blob/apex_extension/TACOS_APEX_Flow.png)
