@@ -10,4 +10,6 @@ Collective communication techniques have played a significant role in optimizing
 
 2. This information is used to instantiate the pipelines at build time.
 
+3. Add a logger mechanism to keep track of the status of transactions taking place between TACOS and APEX.
+
 ![TACOS to APEX flow](https://github.com/davendramaharaj1/apex_tacos/blob/apex_extension/TACOS_APEX_Flow.png)
