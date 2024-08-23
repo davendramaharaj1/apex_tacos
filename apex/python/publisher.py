@@ -13,14 +13,14 @@ class Publisher(ABC):
         self._subscribers = {}
     
     @abstractmethod
-    def attach(self, int: id, subscriber: Subscriber) -> None:
+    def attach(self, id: int, subscriber: Subscriber) -> None:
         """
         Attach a subscriber to the publisher
         """
         pass
 
     @abstractmethod
-    def detach(self, int: id, subscriber: Subscriber) -> None:
+    def detach(self, id: int, subscriber: Subscriber) -> None:
         """
         Detach a subscriber from the publisher
         """
