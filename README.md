@@ -9,3 +9,5 @@ Collective communication techniques have played a significant role in optimizing
 1. Create TACOSGreedy objects for all the configurations specified in the YAML file, and relay this information - (no. of objects created, (events and "UNIQUE IDENTIFIERS" to identify these events)) to the APEX backend.
 
 2. This information is used to instantiate the pipelines at build time.
+
+![TACOS to APEX flow](URL-to-image)
