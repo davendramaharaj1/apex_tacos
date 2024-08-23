@@ -1,5 +1,4 @@
 # APEX Extension
-
 This is an extension of the course project done in ECE 8803 Hardware Software Co-design for Machine Learning Systems offered at Georgia Institute of Technology during Spring 2024 semester.
 
 ## Flow

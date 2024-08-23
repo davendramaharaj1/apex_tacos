@@ -10,6 +10,6 @@ class Subscriber(ABC):
     @abstractmethod
     def update(self, event: Dict) -> None:
         """
-        Receive update from publisher.
+            Receive update from publisher.
         """
         pass
