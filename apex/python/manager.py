@@ -2,7 +2,7 @@ from publisher import Publisher
 from subscriber import Subscriber
 from typing import Dict
 
-class EventManager(Publisher, Subscriber):
+class EventManager(Publisher):
     '''
     Top Level publisher in the APEX backend
     '''
