@@ -17,4 +17,4 @@ class message:
         logging.error("At t = %0.5f seconds, %s", time.time() - self.start_time, s)
 
     def __del__(self):
-        print("Logger file saved as apex_tacos.py under apex/python")
+        print("Logger file saved as apex_tacos.log under apex/python")

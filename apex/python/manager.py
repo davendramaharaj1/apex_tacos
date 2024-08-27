@@ -29,7 +29,7 @@ class EventManager(Publisher):
     # API Endpoint for Upstream
     def forward_event(self, id: int, event: Dict) -> None:
         for subscriber in self._subscribers[id]:
-            subscriber.update(event)
+            # subscriber.update(event)
             self.pub_m.display_info(f"Subscriber {id} updated!")
 
     # Notify subscribers of incoming event
@@ -41,7 +41,13 @@ class EventManager(Publisher):
         self.forward_event(id, event)
         self.pub_m.display_info(f"Subscriber {id} notified!")
 
-if __name__ == "__main__":
-    s = Subscriber()
-    e = EventManager()
-    e.attach(1,s)
+# if __name__ == "__main__":
+#     s = Subscriber()
+#     e = EventManager()
+#     e.attach(1,s)
+
+#     e.attach(3,s)
+
+#     e.notify({'id': 1})
+
+#     e.detach(1,s)
