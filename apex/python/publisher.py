@@ -29,6 +29,13 @@ class Publisher(ABC):
     @abstractmethod
     def notify(self, event: Dict) -> None:
         """
-        Notify subscriber about an event
+        Notify subscribers about an event
+        """
+        pass
+
+    @abstractmethod
+    def notify_finish(self, id: int) -> None:
+        """
+        Notify subscribers that this publisher is done
         """
         pass
