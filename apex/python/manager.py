@@ -1,7 +1,7 @@
 from python.publisher import Publisher
 from python.subscriber import Subscriber
 from typing import Dict
-from log import Logger
+from python.log import Logger
 import logging
 
 class EventManager(Publisher):
