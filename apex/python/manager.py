@@ -54,5 +54,5 @@ class EventManager(Publisher):
     
     # API Endpoint for Upstream to inform subscribers 
     # that their Event Source (Tacos Object) is finished
-    def finish(self) -> None:
-        self.notify_finish()
+    def finish(self, id: int) -> None:
+        self.notify_finish(id)
