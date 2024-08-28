@@ -1,20 +1,39 @@
 import logging
-import time
+import os
 
-class message:
-    def __init__(self):
-        self.start_time = time.time()
-        logging.basicConfig(filename="apex_tacos.log", filemode="w", format="%(name)s - %(levelname)s - %(message)s", level=logging.INFO)
-        logging.info("Starting Logger..")
+CUSTOM_LOGGING_LEVEL = 60
+CUSTOM_LOGGING_LEVEL_NAME = 'PRODUCTION'
+logging.addLevelName(CUSTOM_LOGGING_LEVEL, CUSTOM_LOGGING_LEVEL_NAME)
 
-    def display_info(self, s:str) ->None:
-        logging.info("At t = %0.5f seconds, %s", time.time() - self.start_time, s)
+class Logger:
+    def __init__(self, name:str, level = CUSTOM_LOGGING_LEVEL):
+        self.string = name
+        self._logger = logging.getLogger(name)
 
-    def display_warning(self, s:str)->None:
-        logging.warning("At t = %0.5f seconds, %s", time.time() - self.start_time, s)
+        #Set the logging level for filtering logging information
+        self._logger.setLevel(level=level)
 
-    def display_error(self, s:str)->None:
-        logging.error("At t = %0.5f seconds, %s", time.time() - self.start_time, s)
+        #Create the log file if it doesn't exist already.
+        log_file_path = os.path.join("../logging", f"{name}.log")
+        os.makedirs(os.path.dirname(log_file_path), exist_ok=True)
 
-    def __del__(self):
-        print("Logger file saved as apex_tacos.log under apex/python")
+        #Create a file handle to dump the log contents.
+        file_handle = logging.FileHandler(log_file_path, mode="w")
+        file_handle.setLevel(level=level)
+        file_handle_format = logging.Formatter(fmt="%(asctime)s - %(name)s - %(levelname)s - %(message)s", datefmt='%Y-%m-%d %H:%M:%S')
+        file_handle.setFormatter(file_handle_format)
+        self._logger.addHandler(file_handle)
+
+        self.log_info(f"Starting to record {name} events in apex/python/logging/{name}.log")
+
+    def log_info(self, name:str) ->None:
+        self._logger.info("%s", name)
+
+    def log_warning(self, name:str)->None:
+        self._logger.warning("%s", name)
+
+    def log_error(self, name:str)->None:
+        self._logger.error("%s", name)
+
+    def log_critical(self, name:str)->None:
+        self._logger.critical("%s", name)
