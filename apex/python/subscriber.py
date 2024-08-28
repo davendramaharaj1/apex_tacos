@@ -7,9 +7,9 @@ class Subscriber(ABC):
     The Subscriber interface declares the update method, used by publishers.
     """
 
-    # @abstractmethod
-    # def update(self, event: Dict) -> None:
-    #     """
-    #         Receive update from publisher.
-    #     """
-    #     pass
+    @abstractmethod
+    def update(self, event: Dict) -> None:
+        """
+            Receive update from publisher.
+        """
+        pass

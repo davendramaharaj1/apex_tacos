@@ -41,14 +41,3 @@ class EventManager(Publisher):
         # Forward Event downstream
         self.forward_event(id, event)
         self._pub.log_info(f"Subscriber {id} notified!")
-
-if __name__ == "__main__":
-    s = Subscriber()
-    e = EventManager()
-    e.attach(1,s)
-
-    e.attach(3,s)
-
-    e.notify({'id': 1})
-
-    e.detach(1,s)
