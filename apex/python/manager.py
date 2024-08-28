@@ -1,6 +1,8 @@
 from publisher import Publisher
 from subscriber import Subscriber
 from typing import Dict
+from log import Logger
+import logging
 
 class EventManager(Publisher):
     '''
@@ -9,22 +11,27 @@ class EventManager(Publisher):
 
     def __init__(self) -> None:
         super().__init__()
+        self._pub = Logger("EventManager",logging.DEBUG)
 
     # Add subscriber
     def attach(self, id: int, subscriber: Subscriber) -> None:
         if id not in self._subscribers:
+            self._pub.log_info(f"Subscriber {id} doesn't exist!")
             self._subscribers[id] = []
         self._subscribers[id].append(subscriber)
+        self._pub.log_info("Subscriber Added!")
     
     # Remove subscriber
     def detach(self, id: int, subscriber: Subscriber) -> None:
         if id in self._subscribers:
             self._subscribers[id].remove(subscriber)
+            self._pub.log_info(f"Subscriber {id} Removed!")
     
     # API Endpoint for Upstream
     def forward_event(self, id: int, event: Dict) -> None:
         for subscriber in self._subscribers[id]:
-            subscriber.update(event)
+            # subscriber.update(event)
+            self._pub.log_info(f"Subscriber {id} updated!")
 
     # Notify subscribers of incoming event
     def notify(self, event: Dict) -> None:
@@ -33,3 +40,4 @@ class EventManager(Publisher):
 
         # Forward Event downstream
         self.forward_event(id, event)
+        self._pub.log_info(f"Subscriber {id} notified!")
